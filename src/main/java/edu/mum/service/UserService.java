@@ -10,4 +10,6 @@ public interface UserService {
 	public List<User> findAll();
  	public User update(User user);
  	public List<User> findAllJoinFetch();
+ 	public List<User> findAllBatch();
+ 	public List<User> findAllSubSelect();
 }

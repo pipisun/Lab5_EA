@@ -55,8 +55,9 @@ import org.hibernate.annotations.FetchMode;
     List<Address> addresses;
     
     @OneToMany(  cascade = { CascadeType.PERSIST,CascadeType.MERGE})
-
-
+    @Fetch(FetchMode.JOIN)
+//    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },fetch=FetchType.LAZY)
+//    @org.hibernate.annotations.Fetch(org.hibernate.annotations.FetchMode.SUBSELECT) 
     List<Item> boughtItems = new ArrayList<Item>();
     
      

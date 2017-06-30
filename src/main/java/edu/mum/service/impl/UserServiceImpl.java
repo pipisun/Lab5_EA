@@ -38,5 +38,27 @@ public class UserServiceImpl implements edu.mum.service.UserService {
 		 return userDao.findAllJoinFetch();
 
  	}
+	
+	public List<User> findAllBatch() {
+		List<User> users =  (List<User>)this.findAll();
+ 		// hydrate - need to access ALL since we don't know batch Size
+		// e.g. if size =2  AND there are 6 members we need to hydrate members #1 & #3 & #5
+       	for (User user : users)
+       		if (!user.getBoughtItems().get(0).toString().isEmpty()) user.getBoughtItems().get(0);
+		
+		// This will work for our example as there are size =2 & there are 3 members
+/*      members.get(0).getAddresses().get(0);
+      	members.get(2).getAddresses().get(0);
+*/
+        return users;
 
+	}
+	
+	public List<User> findAllSubSelect() {
+ 		// hydrate since LAZY load
+       	List<User> users =  (List<User>)this.findAll();
+       	users.get(0).getBoughtItems().get(0);
+			           
+        return users;	
+	}
 }
