@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -57,7 +58,9 @@ import org.hibernate.annotations.FetchMode;
     @OneToMany(  cascade = { CascadeType.PERSIST,CascadeType.MERGE})
     @Fetch(FetchMode.JOIN)
 //    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },fetch=FetchType.LAZY)
-//    @org.hibernate.annotations.Fetch(org.hibernate.annotations.FetchMode.SUBSELECT) 
+//    @Fetch(FetchMode.SUBSELECT) 
+//    @Fetch(FetchMode.SELECT)
+//    @BatchSize(size=2)
     List<Item> boughtItems = new ArrayList<Item>();
     
      
